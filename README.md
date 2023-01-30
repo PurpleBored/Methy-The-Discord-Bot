@@ -9,6 +9,17 @@
  •Fun commands
  •Better Hosting
  As for the time being this is a solo project but i hope i will meet a lot of good pepole along the way ;)
+ # How to use to bot and aviable Commands
+To use the boot after instaling it and hosting invite the bost using instruction bellow
+So fisrt join a voice chanel then type !play <song name or Url>
+Here are the commands to the newest version of the bot if some of the commands dont work check if you on the newst version!
+•!play <Song name or Url> Plays Songs
+•!stop Stops playback and clears the queue
+•!pause Pauses curently playing music
+•!resume resumes curently playing music
+•!help Gives all the commands aviable to the version
+•!print Print is mostly a Debuging command wich shows session ID what is curently playing and whats in the queue
+•!leave Makes the bot leave your chanel
  # Instalation and Hosting
  To host this bot on you own you need this Dependecis:
  1. You need to download and install ffmpeg

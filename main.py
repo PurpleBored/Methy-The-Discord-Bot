@@ -5,6 +5,8 @@ import os
 import discord
 import asyncio
 import youtube_dl
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
 from discord.ext import commands
 #install this one like that "pip install load_dotenv"
 from dotenv import load_dotenv
@@ -31,6 +33,17 @@ FFMPEG_OPTIONS = {
 #TODO: Terminate season after X minutes have passed without interaction.
 sessions = []
 
+@bot.command(name='plshelp')
+async def help_command(ctx):
+    embed = discord.Embed(title='List of Commands', description='List of commands for alpha 0.02:')
+    embed.add_field(name='!play', value='Plays Music"', inline=False)
+    embed.add_field(name='!stop', value='Stops Msuic playback', inline=False)
+    embed.add_field(name='!pause', value='Pauses Msuic playback"', inline=False)
+    embed.add_field(name='!resume', value='Resumes Msuic playback"', inline=False)
+    embed.add_field(name='!print', value='prints session id Music playing now and the queue"', inline=False)
+    embed.add_field(name='!leave', value='Makes the bot leave the vc"', inline=False)
+
+    await ctx.send(embed=embed)
 
 def check_session(ctx):
     """
