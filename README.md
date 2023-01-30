@@ -43,4 +43,4 @@ Here is a tutoiral to how to install VS
 A:Go to the download website https://code.visualstudio.com/
 B:Press the Download button 
 C:after it downlaod open the setup and proced with instaltion
-# If you spot any issues or you have problems with it contact me on my email niko@femboy.clik or Create a issue on github
+# If you spot any issues or you have problems with it contact me on my email discord@waste-of-a.life or Create a issue on github
