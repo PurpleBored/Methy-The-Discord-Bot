@@ -1,4 +1,3 @@
-<h1><center>Methy Discord Music Bot :) </h1>
 # Methy a New and simple Discord music bot
  Methy is a very simple yet capeble discord bot created using python.
  Methy is currently in Alpha 0.01 and it has curently only music playing support but in the future A lot of this will be added Like:
