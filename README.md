@@ -20,6 +20,9 @@ Here are the commands to the newest version of the bot if some of the commands d
 •!help Gives all the commands aviable to the version
 •!print Print is mostly a Debuging command wich shows session ID what is curently playing and whats in the queue
 •!leave Makes the bot leave your chanel
+# Invite this bot! 
+https://discord.com/api/oauth2/authorize?client_id=1068953280316702820&permissions=829196606272&scope=bot
+Here is the invite link if you want to use it on your own! :)
  # Instalation and Hosting
  To host this bot on you own you need this Dependecis:
  1. You need to download and install ffmpeg
