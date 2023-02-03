@@ -3,3 +3,4 @@
 .cache
 __pycache__/utilities.cpython-311.pyc
 .env
+.env
