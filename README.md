@@ -1,6 +1,6 @@
 # Methy a New and simple Discord music bot
  Methy is a very simple yet capeble discord bot created using python.
- Methy is currently in Alpha 0.01 and it has curently only music playing support but in the future A lot of this will be added Like:
+ Methy is currently in Alpha 0.03 and it has curently only music playing support but in the future A lot of this will be added Like:
  1. •Moderation Tools
  2. •Spotify and Soundcloud Support
  3. •A Website
@@ -20,7 +20,7 @@ Here are the commands to the newest version of the bot if some of the commands d
 5. •!help Gives all the commands aviable to the version
 6. •!print Print is mostly a Debuging command wich shows session ID what is curently playing and whats in the queue
 7. •!leave Makes the bot leave your chanel
-# Invite this bot! 
+# **Invite this bot**! 
 [Invite][https://discord.com/api/oauth2/authorize?client_id=1068953280316702820&permissions=829196606272&scope=bot]
 Here is the invite link if you want to use it on your own! :)
  # Instalation and Hosting
@@ -41,6 +41,7 @@ C: Add a bot on "Bot" tab.
 D: Make sure the "Server members intent" option is checked on.
 E: Still on the "Bot" tab, on the right of the bot's icon, click "Copy" to copy the token to your clipboard.
 F: Paste your token to the .env file
+**If you want to host it on a VPS i higly recomend using Galaxygate for its ease of use :)**
 # To  do all that you will Probably need a IDE i Recomend VS cause its light weight and beginer friendly
 Here is a tutoiral to how to install VS
 A: Go to the download website https://code.visualstudio.com/

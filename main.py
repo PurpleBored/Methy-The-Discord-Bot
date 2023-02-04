@@ -5,8 +5,8 @@ import os
 import discord
 import asyncio
 import youtube_dl
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+#import spotipy
+#from spotipy.oauth2 import SpotifyOAuth
 from discord.ext import commands
 from discord import client
 #install this one like that "pip install load_dotenv"
@@ -37,7 +37,7 @@ FFMPEG_OPTIONS = {
 #TODO: Terminate season after X minutes have passed without interaction.
 sessions = []
 
-@bot.command(name='ping')
+@bot.command(name='ping', brief='Pings the bot and shows the latency betwen the Bot and the Discord Server')
 async def ping(ctx):
     color = int(0x5D3FD3)
     if round(ctx.bot.latency * 1000) <= 50:
@@ -54,9 +54,10 @@ async def ping(ctx):
 async def git(ctx):
     await ctx.send("The source code of this project can be found at https://github.com/PurpleBored/Methy-The-Discord-Bot If you have any issues you can report that too on this github page :D")
 
-@bot.command(name='plshelp')
+@bot.command(name='plshelp', brief='plshelp is a better version of the help command')
 async def help_command(ctx):
-    embed = discord.Embed(title='List of Commands.', description='List of commands for alpha 0.03!:')
+    embed = discord.Embed(title='List of Commands.', description='List of commands for alpha 0.03!:',color=0x5D3FD3)
+    embed.add_field(name='!help', value='An older version of the help command.', inline=False)
     embed.add_field(name='!play', value='Plays Music.', inline=False)
     embed.add_field(name='!stop', value='Stops Music playback.', inline=False)
     embed.add_field(name='!skip', value='Jumps to the next song in the queue.', inline=False)
@@ -231,11 +232,10 @@ async def skip(ctx):
         return
 
 
-@bot.command(name='print')
+@bot.command(name='print',brief='Prints Sesion id and queue')
 async def print_info(ctx):
     """
-    A debug command to find session id, what is current playing and what is on the queue.
-    :param ctx: discord.ext.commands.Context
+    A debug command to find session id, t
     :return: None
     """
     session = check_session(ctx)
