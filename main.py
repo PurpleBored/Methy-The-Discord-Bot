@@ -191,7 +191,7 @@ async def play(ctx, *, arg):
         return
     else:
         await ctx.send(thumb)
-        await ctx.send(f"Now Playingq(≧▽≦q): {title}")
+        await ctx.send(f"Now Playing(≧▽≦q): {title}")
 
         # Guarantees that the requested music is the current music.
         session.q.set_last_as_current()

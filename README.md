@@ -50,3 +50,4 @@ C: after it downlaod open the setup and proced with instaltion
 
 
 [https://discord.com/api/oauth2/authorize?client_id=1068953280316702820&permissions=829196606272&scope=bot]: https://discord.com/api/oauth2/authorize?client_id=1068953280316702820&permissions=829196606272&scope=bot
+[https://youtu.be/qjtmgCb8NcE]:[https://youtu.be/qjtmgCb8NcE]
