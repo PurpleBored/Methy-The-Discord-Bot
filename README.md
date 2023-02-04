@@ -26,7 +26,7 @@ Here is the invite link if you want to use it on your own! :)
  # Instalation and Hosting
  To host this bot on you own you need this Dependecis:
  1. You need to download and install ffmpeg
-  Depedning on your os this may vary but here is a youtube tutorial for Windows: [Tutorial][https://youtu.be/qjtmgCb8NcE]
+  Depedning on your os this may vary but here is a youtube tutorial for Windows:[Video Tutorial][https://youtu.be/qjtmgCb8NcE]
  2. You need to download or clone this repo to your drive
  3. You need to install this libraries you can do that by using those comands in your termianal
   pip install youtube_dl

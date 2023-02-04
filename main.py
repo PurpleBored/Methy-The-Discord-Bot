@@ -8,10 +8,12 @@ import youtube_dl
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from discord.ext import commands
+from discord import client
 #install this one like that "pip install load_dotenv"
 from dotenv import load_dotenv
 
 import utilities
+
 
 load_dotenv()
 
@@ -20,6 +22,8 @@ token = os.getenv('discordToken')
 # Set the bot intents accordingly to be able to read info about guild members.
 intents = discord.Intents.all()
 intents.members = True
+
+client = discord.Client(intents=discord.Intents.default())
 
 #Here you can change the prefix by deleting the '!' to something you like :)
 bot = commands.Bot(command_prefix='!',intents=intents)
@@ -33,15 +37,37 @@ FFMPEG_OPTIONS = {
 #TODO: Terminate season after X minutes have passed without interaction.
 sessions = []
 
+@bot.command(name='ping')
+async def ping(ctx):
+    color = int(0x5D3FD3)
+    if round(ctx.bot.latency * 1000) <= 50:
+        embed=discord.Embed(title="Ping", description=f"The ping is **{round(ctx.bot.latency *1000)}** milliseconds!", color=0x5D3FD3)
+    elif round(ctx.bot.latency * 1000) <= 100:
+        embed=discord.Embed(title="Ping", description=f"The ping is **{round(ctx.bot.latency *1000)}** milliseconds!", color=0x5D3FD3)
+    elif round(ctx.bot.latency * 1000) <= 200:
+        embed=discord.Embed(title="Ping", description=f"The ping is **{round(ctx.bot.latency *1000)}** milliseconds!", color=0x5D3FD3)
+    else:
+        embed=discord.Embed(title="Ping", description=f"The ping is **{round(ctx.bot.latency *1000)}** milliseconds!", color=0x5D3FD3)
+    await ctx.send(embed=embed)
+
+@bot.command(name='git', brief='Link to this projects github page ヾ(≧▽≦*)o')
+async def git(ctx):
+    await ctx.send("The source code of this project can be found at https://github.com/PurpleBored/Methy-The-Discord-Bot If you have any issues you can report that too on this github page :D")
+
 @bot.command(name='plshelp')
 async def help_command(ctx):
-    embed = discord.Embed(title='List of Commands', description='List of commands for alpha 0.02:')
-    embed.add_field(name='!play', value='Plays Music"', inline=False)
-    embed.add_field(name='!stop', value='Stops Msuic playback', inline=False)
-    embed.add_field(name='!pause', value='Pauses Msuic playback"', inline=False)
-    embed.add_field(name='!resume', value='Resumes Msuic playback"', inline=False)
-    embed.add_field(name='!print', value='prints session id Music playing now and the queue"', inline=False)
-    embed.add_field(name='!leave', value='Makes the bot leave the vc"', inline=False)
+    embed = discord.Embed(title='List of Commands.', description='List of commands for alpha 0.03!:')
+    embed.add_field(name='!play', value='Plays Music.', inline=False)
+    embed.add_field(name='!stop', value='Stops Music playback.', inline=False)
+    embed.add_field(name='!skip', value='Jumps to the next song in the queue.', inline=False)
+    embed.add_field(name='!pause', value='Pauses Msuic playback.', inline=False)
+    embed.add_field(name='!resume', value='Resumes Msuic playback.', inline=False)
+    embed.add_field(name='!print', value='prints session id Music playing now and the queue.', inline=False)
+    embed.add_field(name='!leave', value='Makes the bot leave the vc.', inline=False)
+    embed.add_field(name='!git', value='Links to the github page of this bot :)', inline=False)
+    embed.add_field(name='!ping', value='Checks if the bot is online and responding and says the latency.', inline=False)
+    
+    
 
     await ctx.send(embed=embed)
 
@@ -96,7 +122,7 @@ async def continue_queue(ctx):
     """
     session = check_session(ctx)
     if not session.q.theres_next():
-        await ctx.send("The queue ended fren")
+        await ctx.send("The queue ended friend ＞︿＜ ")
         return
 
     session.q.next()
@@ -109,7 +135,7 @@ async def continue_queue(ctx):
 
     voice.play(source, after=lambda e: prepare_continue_queue(ctx))
     await ctx.send(session.q.current_music.thumb)
-    await ctx.send(f"Now Playing: {session.q.current_music.title}")
+    await ctx.send(f"Now Playingq(≧▽≦q): {session.q.current_music.title}")
 
 
 @bot.command(name='play')
@@ -129,7 +155,7 @@ async def play(ctx, *, arg):
     # If command's author isn't connected, return.
     except AttributeError as e:
         print(e)
-        await ctx.send("Your not in a voice chanel")
+        await ctx.send("You are not in a vc")
         return
 
     # Finds author's session.
@@ -165,7 +191,7 @@ async def play(ctx, *, arg):
         return
     else:
         await ctx.send(thumb)
-        await ctx.send(f"Mow Playing: {title}")
+        await ctx.send(f"Now Playingq(≧▽≦q): {title}")
 
         # Guarantees that the requested music is the current music.
         session.q.set_last_as_current()
@@ -186,7 +212,7 @@ async def skip(ctx):
     session = check_session(ctx)
     # If there isn't any song to be played next, return.
     if not session.q.theres_next():
-        await ctx.send("There is nothing in the queue right now.")
+        await ctx.send("There is nothing left in queue")
         return
 
     # Finds an available voice client for the bot.
@@ -216,7 +242,7 @@ async def print_info(ctx):
     await ctx.send(f"Session ID: {session.id}")
     await ctx.send(f"Now Playing: {session.q.current_music.title}")
     queue = [q[0] for q in session.q.queue]
-    await ctx.send(f"Queue: {queue}")
+    await ctx.send(f"Things left in the queue: {queue}")
 
 
 @bot.command(name='leave')
@@ -232,7 +258,7 @@ async def leave(ctx):
         check_session(ctx).q.clear_queue()
         await voice.disconnect()
     else:
-        await ctx.send("Bot is not connect, so it can't leave.")
+        await ctx.send("Bot is not in any VC, so it can't leave.")
 
 
 @bot.command(name='pause')
@@ -247,7 +273,7 @@ async def pause(ctx):
     if voice.is_playing():
         voice.pause()
     else:
-        await ctx.send("Nothing is playing at the moment")
+        await ctx.send("Nothing is currently playing.")
 
 
 @bot.command(name='resume')
@@ -262,7 +288,7 @@ async def resume(ctx):
     if voice.is_paused:
         voice.resume()
     else:
-        await ctx.send("Music is already paused")
+        await ctx.send("Music is paused already.")
 
 
 @bot.command(name='stop')
@@ -279,7 +305,7 @@ async def stop(ctx):
         voice.stop()
         session.q.clear_queue()
     else:
-        await ctx.send("Nothing is playing at the moment")
+        await ctx.send("Nothing is currently playing.")
 
 
 bot.run(token)
