@@ -12,7 +12,7 @@ from discord import client
 #install this one like that "pip install load_dotenv"
 from dotenv import load_dotenv
 
-import utilities
+import util
 
 
 load_dotenv()
@@ -84,12 +84,12 @@ def check_session(ctx):
         for i in sessions:
             if i.guild == ctx.guild and i.channel == ctx.author.voice.channel:
                 return i
-        session = utilities.Session(
+        session = util.Session(
             ctx.guild, ctx.author.voice.channel, id=len(sessions))
         sessions.append(session)
         return session
     else:
-        session = utilities.Session(ctx.guild, ctx.author.voice.channel, id=0)
+        session = util.Session(ctx.guild, ctx.author.voice.channel, id=0)
         sessions.append(session)
         return session
 
